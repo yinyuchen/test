@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/controller/CompanyController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/controller/LoginController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/realm" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/realm/CustomRealm.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/realm/UserRealm.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/service/LoginService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/service/impl/LoginServiceImpl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/util/DateUtils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/util/FileHandle.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/util/JWTUtils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/util/JsonUtils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/util/MD5Utils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/util/UUIDUtils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/sdut/product/util/VerifyCode.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml" charset="GBK" />
+  </component>
+</project>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdut.product.dao.SuyuanMapper" >
+
+  <!--//生产信息表-->
+  <resultMap id="ResultProductionMap" type="com.sdut.product.pojo.Production" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="people" property="people" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="video" property="video" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--物流信息表-->
+  <resultMap id="ResultLogisticMap" type="com.sdut.product.pojo.Logistic" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="kuaidinum" property="kuaidinum" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--销售信息表-->
+  <resultMap id="ResultSalesMap" type="com.sdut.product.pojo.Sales" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="saler" property="saler" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--建议反馈表-->
+  <resultMap id="ResultFeedBackMap" type="com.sdut.product.pojo.FeedBack" >
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="people" property="people" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="problem" property="problem" jdbcType="VARCHAR" />
+    <result column="suggest" property="suggest" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Production_List" >
+    id, product_id, time, place, status, people, picture, video, introduction
+  </sql>
+
+  <sql id="Base_Logistic_List" >
+    id, product_id, name, time, kuaidinum
+  </sql>
+
+  <sql id="Base_Sales_List" >
+    id, product_id, website, address, time, saler
+  </sql>
+
+  <select id="selectProductionById" resultMap="ResultProductionMap">
+    select
+    <include refid="Base_Production_List" />
+    from production
+    where product_id= #{id}
+  </select>
+
+  <select id="selectLogisticById" resultMap="ResultLogisticMap">
+    select
+    <include refid="Base_Logistic_List" />
+    from logistic
+    where product_id= #{id}
+  </select>
+
+  <select id="selectSalesById" resultMap="ResultSalesMap">
+    select
+    <include refid="Base_Sales_List" />
+    from sales
+    where product_id= #{id}
+  </select>
+
+
+  <insert id="insertFeedBack" parameterType="com.sdut.product.pojo.FeedBack">
+    insert into feedback(product_id, phone, people, problem, suggest) values (#{productId},#{phone},#{people},#{problem},#{suggest})
+  </insert>
+
+
+</mapper>

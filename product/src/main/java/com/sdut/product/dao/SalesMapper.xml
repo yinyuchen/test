@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdut.product.dao.SalesMapper" >
+
+  <select id="selectSalesAll" resultType="com.sdut.product.pojo.Sales">
+    select i.id as ProductId,i.`name` as productName,s.website,s.address,s.time,s.saler from information i LEFT JOIN sales s on s.product_id=i.id
+    <if test="str !='' " >
+      and i.id like #{str} or i.`name` like #{str}
+    </if>
+  </select>
+
+  <select id="selectSalesCount" resultType="java.lang.Integer">
+    select count(*) from information
+    <if test="str != ''" >
+      where id like #{str} or name like #{str}
+    </if>
+  </select>
+
+
+</mapper>
