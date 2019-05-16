@@ -49,16 +49,16 @@ public class LogisticServiceImpl implements LogisticService {
 
     @Override
     public int insertLogistic(Logistic logistic) {
-        return 0;
+        return logisticMapper.insertLogistic(logistic);
     }
 
     @Override
     public int updateLogistic(Logistic logistic) {
-        return 0;
+        return logisticMapper.updateLogistic(logistic);
     }
 
     @Override
     public int deleteById(String id) {
-        return 0;
+        return logisticMapper.deleteById(id);
     }
 }
