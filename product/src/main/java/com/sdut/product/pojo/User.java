@@ -227,4 +227,19 @@ public class User {
         this.message = errorCodeEnum.getErrorMsg();
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", avatar='" + avatar + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                ", registerStatus=" + registerStatus +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

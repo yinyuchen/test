@@ -4,6 +4,8 @@ import com.sdut.product.pojo.User;
 import com.sdut.product.pojo.UserRole;
 import com.sdut.product.dao.LoginMapper;
 import com.sdut.product.service.LoginService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,15 +30,20 @@ public class LoginServiceImpl implements LoginService {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-
         User result =  loginMapper.selectByNameAndPwd(user);
-
         Map<String,Object> userMap = new HashMap<String, Object>();
         userMap.put("id", result.getId());
         userMap.put("username", result.getUsername());
         userMap.put("avatar", result.getAvatar());
         userMap.put("name", result.getName());
-
+        Set<UserRole> roleIdSet = findRoleIdByUid(result.getId());
+        String role = "";
+        for(UserRole roleInfo : roleIdSet) {
+            String roleId=roleInfo.getRoleId();
+            role += findRoleByRoleId(roleId);
+            role+=",";
+        }
+        userMap.put("role",role.substring(0,role.length()-1));
         return userMap;
     }
 
@@ -54,8 +61,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public User findByName(String username) {
-        User user = new User();
-
         User result =  loginMapper.findByName(username);
 
         return result;
