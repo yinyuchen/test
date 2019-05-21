@@ -19,10 +19,10 @@ public interface SalesMapper {
     List<Sales> selectSalesAll(@Param(value = "str") String str);
 
     int selectSalesCount(@Param(value = "str") String str);
-//
-//    int insertCompany(Company company);
-//
-//    int updateCompany(Company company);
-//
-//    int deleteById(@Param(value = "id") String id);
+
+    int insertSales(Sales sales);
+
+    int updateSales(Sales sales);
+
+    int deleteById(@Param(value = "id") String id);
 }

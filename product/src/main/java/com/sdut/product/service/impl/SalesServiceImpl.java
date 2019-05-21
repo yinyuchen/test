@@ -29,6 +29,7 @@ public class SalesServiceImpl implements SalesService {
     public List<Object> selectSalesAll(String str) {
         Integer total = salesMapper.selectSalesCount(str);
         List<Sales> logisticList = salesMapper.selectSalesAll(str);
+        System.out.println(logisticList.toString());
         List<Object> list = new ArrayList<>();
         for (Sales sales : logisticList) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -46,5 +47,20 @@ public class SalesServiceImpl implements SalesService {
             list.add(map);
         }
         return list;
+    }
+
+    @Override
+    public int insertSales(Sales sales) {
+        return salesMapper.insertSales(sales);
+    }
+
+    @Override
+    public int updateSales(Sales sales) {
+        return salesMapper.updateSales(sales);
+    }
+
+    @Override
+    public int deleteById(String id) {
+        return salesMapper.deleteById(id);
     }
 }

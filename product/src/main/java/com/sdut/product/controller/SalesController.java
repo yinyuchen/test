@@ -1,5 +1,7 @@
 package com.sdut.product.controller;
 
+import com.sdut.product.pojo.Sales;
+import com.sdut.product.pojo.dto.Response;
 import com.sdut.product.service.LogisticService;
 import com.sdut.product.service.SalesService;
 import com.sdut.product.util.JsonUtils;
@@ -34,10 +36,12 @@ public class SalesController {
 
         Map<String, Object> map = new HashMap<String, Object>();
         try {
-            Subject subject = SecurityUtils.getSubject();
-            subject.checkPermission("view");
+//            Subject subject = SecurityUtils.getSubject();
+//            subject.checkPermission("view");
             if (str!=null&&!str.equals("")){
                 str="%"+str+"%";
+            }else {
+                str = "";
             }
             List<Object> list  = salesService.selectSalesAll(str);
             if (list!=null){
@@ -53,5 +57,53 @@ public class SalesController {
             map.put("msg",URLEncoder.encode("无权限!"));
         }
         return JsonUtils.mapToJson(map);
+    }
+
+    @RequestMapping(value = "insertSales")
+    public Response insertCompany(Sales sales){
+        try {
+//            Subject subject = SecurityUtils.getSubject();
+//            subject.checkPermission("insert");
+            Integer result = salesService.insertSales(sales);
+            if (result!=null&&result!=0){
+                return Response.success(200,URLEncoder.encode("新增成功!"));
+            }else {
+                return Response.success(500,URLEncoder.encode("新增失败!"));
+            }
+        }catch (Exception e){
+            return Response.error(300,URLEncoder.encode("无权限!"));
+        }
+    }
+
+    @RequestMapping(value = "updateSales")
+    public Response updateCompany(Sales sales){
+        try {
+//            Subject subject = SecurityUtils.getSubject();
+//            subject.checkPermission("update");
+            Integer result = salesService.updateSales(sales);
+            if (result!=null&&result!=0){
+                return Response.success(200,URLEncoder.encode("修改成功!"));
+            }else {
+                return Response.success(500,URLEncoder.encode("修改失败!"));
+            }
+        }catch (Exception e){
+            return Response.error(300,URLEncoder.encode("无权限!"));
+        }
+    }
+
+    @RequestMapping(value = "deleteSales")
+    public Response deleteCompany(String id){
+        try {
+//            Subject subject = SecurityUtils.getSubject();
+//            subject.checkPermission("delete");
+            Integer result = salesService.deleteById(id);
+            if (result!=null&&result!=0){
+                return Response.success(200,URLEncoder.encode("删除成功!"));
+            }else {
+                return Response.success(500,URLEncoder.encode("删除失败!"));
+            }
+        }catch (Exception e){
+            return Response.error(300,URLEncoder.encode("无权限!"));
+        }
     }
 }

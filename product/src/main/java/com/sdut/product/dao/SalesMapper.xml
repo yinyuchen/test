@@ -16,5 +16,18 @@
     </if>
   </select>
 
+  <insert id="insertSales" parameterType="com.sdut.product.pojo.Sales">
+    insert into sales(product_id, website, address, time, saler)
+    values(#{productId},#{website},#{address},#{time},#{saler})
+  </insert>
+
+  <update id="updateSales" parameterType="com.sdut.product.pojo.Sales">
+    update sales set website=#{website},address=#{address},time=#{time},saler=#{saler}
+  </update>
+
+  <delete id="deleteById">
+    delete from sales
+    where product_id in (#{id})
+  </delete>
 
 </mapper>
